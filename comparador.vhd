@@ -5,7 +5,7 @@ entity comparador is
 	port(
 		entrada: in std_logic_vector(8 downto 0);      -- valor digitado pelo usuário que deve ser comparado ao da memória;
 		memoria  : in std_logic_vector(8 downto 0);    -- senha guardada na memória do cofre;
-		resultado : out bit;                           -- resultado da comparação (1: senha correta; 0: senha incorreta);
+		resultado : out std_logic                      -- resultado da comparação (1: senha correta; 0: senha incorreta);
 	);
 end comparador;
 
@@ -15,7 +15,7 @@ begin
 	begin
 		if memoria = entrada then
 			resultado <= '1';
-		else then
+		else
 			resultado <= '0';
 		end if;
 	end process;

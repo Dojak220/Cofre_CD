@@ -1,0 +1,29 @@
+|Cofre
+teclas[0] => ~NO_FANOUT~
+teclas[1] => ~NO_FANOUT~
+teclas[2] => ~NO_FANOUT~
+teclas[3] => ~NO_FANOUT~
+teclas[4] => ~NO_FANOUT~
+teclas[5] => ~NO_FANOUT~
+teclas[6] => ~NO_FANOUT~
+teclas[7] => ~NO_FANOUT~
+cs => FSM~1.IN0
+cs => FSM~3.IN0
+reset => Mux9.IN6
+reset => Mux9.IN7
+clk => FSM~1.IN1
+clk => FSM~3.IN1
+modo <= led_modo.DB_MAX_OUTPUT_PORT_TYPE
+abre <= led_abre.DB_MAX_OUTPUT_PORT_TYPE
+bloqueado <= led_modo~0.DB_MAX_OUTPUT_PORT_TYPE
+salvou <= senha_salva.DB_MAX_OUTPUT_PORT_TYPE
+memoria[0] <= senha_memoria[0].DB_MAX_OUTPUT_PORT_TYPE
+memoria[1] <= senha_memoria[1].DB_MAX_OUTPUT_PORT_TYPE
+memoria[2] <= senha_memoria[2].DB_MAX_OUTPUT_PORT_TYPE
+memoria[3] <= senha_memoria[3].DB_MAX_OUTPUT_PORT_TYPE
+memoria[4] <= senha_memoria[4].DB_MAX_OUTPUT_PORT_TYPE
+memoria[5] <= senha_memoria[5].DB_MAX_OUTPUT_PORT_TYPE
+memoria[6] <= senha_memoria[6].DB_MAX_OUTPUT_PORT_TYPE
+memoria[7] <= senha_memoria[7].DB_MAX_OUTPUT_PORT_TYPE
+
+

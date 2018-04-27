@@ -1,49 +1,25 @@
-queolibrary ieee;
+library ieee;
 use ieee.std_logic_1164.all;
 
 entity cofre is
 	port(
-		teclas   : in bit_vector(7 downto 0);
+		teclas: in std_logic_vector(7 downto 0);
 		cs, reset, clk: in std_logic;
-		modo, abre, bloqueado: out std_logic
+		modo, abre, bloqueado, salvou: out std_logic;
+		memoria : out std_logic_vector(7 downto 0)
 		);
 end cofre;
 
 architecture estrutura of cofre is
-	component registrador_8 is
-		port(
-		d8  : in std_logic_vector(7 downto 0); -- vetor de entrada de 8 bits;
-		ld8, clr8, clk8 : in bit;                -- load, clear e clock do registrador de 8 bits;
-		q8  : std_logic_vector(7 downto 0)     -- vetor de saída de 8 bits;
-	);
-	end component;
-	
-	/*
-	component registrador_3 is
-	port(
-		d3  : in std_logic_vector(2 downto 0); -- vetor de entrada de 3 bits;
-		ld3, clr3, clk3 : in bit;                -- load, clear e clock do registrador de 8 bits;
-		q3  : std_logic_vector(2 downto 0)     -- vetor de saída de 3 bits;
-	);
-	end component;
-	*/
-	
-	component comparador is
-	port(
-		entrada: in std_logic_vector(8 downto 0);      -- valor digitado pelo usuário que deve ser comparado ao da memória;
-		memoria  : in std_logic_vector(8 downto 0);    -- senha guardada na memória do cofre;
-		resultado : out bit;                           -- resultado da comparação (1: senha correta; 0: senha incorreta);
-	);
-	end component;
-	
-	signal estado: std_logic_vector(2 downto 0) = '000';
+	signal estado: std_logic_vector(2 downto 0) := "000";
 	signal estado_aux: std_logic_vector(2 downto 0);
-	signal senha_memoria: std_logic_vector(7 downto 0) = '00000000';
+	signal senha_memoria: std_logic_vector(7 downto 0) := "00000000";
 	signal entrada: std_logic_vector(7 downto 0);
-	signal resultado_compara: std_logic = 0;
-	signal senha_salva: std_logic = 0;
-	signal led_bloq, led_abre, led_modo: std_logic = 0;
-	signal bloq: std_logic = 0;
+	signal resultado_compara: std_logic := '0';
+	signal compare : std_logic_vector(7 downto 0) := "00000000";
+	signal senha_salva: std_logic := '0';
+	signal led_bloq, led_abre, led_modo: std_logic := '0';
+	signal bloq: std_logic := '0';
 	
 	
 	begin
@@ -51,62 +27,92 @@ architecture estrutura of cofre is
 		
 		begin
 			case estado is
-				when 000 =>
-					led_bloq = '0';
-					led_modo = '0';
-					led_abre = '0';
+				when "000" => --modo conf
+					led_bloq <= '0';
+					led_modo <= '1';
+					led_abre <= '1';
 					
 					if (cs = '0' and clk = '1' and senha_salva = '0') then
-						estado_aux <= 001;
-					if (cs = '1' and clk) = '1' and senha_salva = '1') then
-						estado_aux <=010;
-									
-				when 001 =>
-					senha_memoria <= entrada;
+						estado_aux <= "001";
+					end if;
+					if ((cs = '1' and clk = '1') and (senha_salva = '1')) then
+						estado_aux <="010";
+					end if;
+				when "001" => --modo salva
+					senha_memoria(0)<= entrada(0);
+					senha_memoria(1)<= entrada(1);
+					senha_memoria(2)<= entrada(2);
+					senha_memoria(3)<= entrada(3);
+					senha_memoria(4)<= entrada(4);
+					senha_memoria(5)<= entrada(5);
+					senha_memoria(6)<= entrada(6);
+					senha_memoria(7)<= entrada(7);
+					 
 					senha_salva <= '1';
-					estado_aux <= '000';
+					estado_aux <= "000";
 					
-				when 010 =>
-					led_modo = '1';
-					led_abre = '0';
-					led_bloq = '0';
 					
-					if (clk = '1' and cs = '0')
-						estado_aux <= '000';
-					if (clk = '1' and cs = '1')
-						estado_aux <= '011';
+				when "010" => --modo seg/op
+					led_modo <= '1';
+					led_abre <= '1';
+					led_bloq <= '0';
 					
+					if (clk = '1' and cs = '0') then
+						estado_aux <= "000";
+						
+					elsif (clk = '1' and cs = '1') then
+						estado_aux <= "011";
+					end if;
 				
-				when 011 =>
-					if (entrada == senha_memoria) then
-						estado_aux <= '100';
-					else then
-						estado_aux <= '101';
+				when "011" => --comparando
 					
-				when 100 =>
-					led_abre = '1'
+					compare(0) <= entrada(0) XNOR senha_memoria(0); 
+					compare(1) <= entrada(1) XNOR senha_memoria(1);  
+					compare(2) <= entrada(2) XNOR senha_memoria(2); 
+					compare(3) <= entrada(3) XNOR senha_memoria(3); 
+					compare(4) <= entrada(4) XNOR senha_memoria(4); 
+					compare(5) <= entrada(5) XNOR senha_memoria(5);  
+					compare(6) <= entrada(6) XNOR senha_memoria(6); 
+					compare(7) <= entrada(7) XNOR senha_memoria(7); 
+ 					resultado_compara <= (compare(0) and compare(1) and compare(2) and compare(3) and compare(4) and compare(5) and compare(6) and compare(7));
+					if (resultado_compara = '1') then
+						estado_aux <= "100";
+					else 
+						estado_aux <= "101";
+					end if;
+				when "100" => --aberto
+					led_abre <= '0';
+					led_bloq <= '0';
+					led_modo <= '0';
 					
-					if (clk = '1') then
-						estado_aux <= '010';
-					
-				when 101 =>
-					led_abre = '0';
-					led_bloq = '1';
-					bloq = '1';
-					
+					if (reset = '1') then --volta seg/op
+						estado_aux <= "010";
+					end if;
+				when "101" => --bloqueado
+					led_abre <= '1';
+					led_bloq <= '1';
+					led_modo <= '1';
+
 					if (reset = '1') then
-						estado_aux <= '110';
-											
-				when 110 =>
-					led_bloq = '0';
-					bloq = '0';
-					senha_memoria <= '00000000';
-					
-					estado_aux <= '000';
-					
+						estado_aux <= "110";
+					end if;			
+				when "110" => --espera
+					led_bloq <= '0';
+					senha_memoria <= "00000000";
+					estado_aux <= "000";
+
+				when others =>
+					estado_aux <= "010";--seg/op
+				end case;
+					estado <= estado_aux;
+				end process;
 		
-		
-		
+				modo <= led_modo;
+				abre <= led_abre;
+				bloq <= led_bloq;
+				salvou <= senha_salva;
+				memoria <= senha_memoria;
+end estrutura;
 		
 		
 		
