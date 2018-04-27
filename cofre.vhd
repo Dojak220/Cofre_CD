@@ -1,4 +1,4 @@
-library ieee;
+queolibrary ieee;
 use ieee.std_logic_1164.all;
 
 entity cofre is
@@ -36,4 +36,15 @@ architecture estrutura of cofre is
 	);
 	end component;
 	
-	process
+	signal estado: std_logic_vector(2 downto 0) = "000";
+	signal senha_memoria std_logic_vector(7 downto 0) = "00000000";
+	signal entrada std_logic_vector(7 downto 0);
+	signal resultado_compara std_logic = 0;
+	signal senha_salva std_logic = 0;
+	signal led_bloq, led_abre, led_modo std_logic = 0;
+	signal bloq std_logic = 0;
+	
+	
+	begin
+		process()
+	
