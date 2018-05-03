@@ -1,0 +1,439 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "05/03/2018 17:51:40"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    cofre
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module cofre_vlg_sample_tst(
+	clk,
+	clk_FPGA,
+	cs,
+	reset,
+	teclas,
+	sampler_tx
+);
+input  clk;
+input  clk_FPGA;
+input  cs;
+input  reset;
+input [7:0] teclas;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(clk or clk_FPGA or cs or reset or teclas)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module cofre_vlg_check_tst (
+	abre,
+	bloqueado,
+	estado,
+	modo,
+	salvou,
+	sampler_rx
+);
+input  abre;
+input  bloqueado;
+input [2:0] estado;
+input  modo;
+input  salvou;
+input sampler_rx;
+
+reg  abre_expected;
+reg  bloqueado_expected;
+reg [2:0] estado_expected;
+reg  modo_expected;
+reg  salvou_expected;
+
+reg  abre_prev;
+reg  bloqueado_prev;
+reg [2:0] estado_prev;
+reg  modo_prev;
+reg  salvou_prev;
+
+reg  abre_expected_prev;
+reg  bloqueado_expected_prev;
+reg [2:0] estado_expected_prev;
+reg  modo_expected_prev;
+reg  salvou_expected_prev;
+
+reg  last_abre_exp;
+reg  last_bloqueado_exp;
+reg [2:0] last_estado_exp;
+reg  last_modo_exp;
+reg  last_salvou_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:5] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 5'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	abre_prev = abre;
+	bloqueado_prev = bloqueado;
+	estado_prev = estado;
+	modo_prev = modo;
+	salvou_prev = salvou;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	abre_expected_prev = abre_expected;
+	bloqueado_expected_prev = bloqueado_expected;
+	estado_expected_prev = estado_expected;
+	modo_expected_prev = modo_expected;
+	salvou_expected_prev = salvou_expected;
+end
+
+
+
+// expected abre
+initial
+begin
+	abre_expected = 1'bX;
+end 
+
+// expected bloqueado
+initial
+begin
+	bloqueado_expected = 1'bX;
+end 
+// expected estado[ 2 ]
+initial
+begin
+	estado_expected[2] = 1'bX;
+	estado_expected[2] = #10000 1'b0;
+	estado_expected[2] = #80000 1'bX;
+end 
+// expected estado[ 1 ]
+initial
+begin
+	estado_expected[1] = 1'bX;
+	estado_expected[1] = #10000 1'b0;
+	estado_expected[1] = #80000 1'bX;
+end 
+// expected estado[ 0 ]
+initial
+begin
+	estado_expected[0] = 1'bX;
+	estado_expected[0] = #10000 1'b0;
+	estado_expected[0] = #80000 1'bX;
+end 
+
+// expected modo
+initial
+begin
+	modo_expected = 1'bX;
+end 
+
+// expected salvou
+initial
+begin
+	salvou_expected = 1'bX;
+end 
+// generate trigger
+always @(abre_expected or abre or bloqueado_expected or bloqueado or estado_expected or estado or modo_expected or modo or salvou_expected or salvou)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected abre = %b | expected bloqueado = %b | expected estado = %b | expected modo = %b | expected salvou = %b | ",abre_expected_prev,bloqueado_expected_prev,estado_expected_prev,modo_expected_prev,salvou_expected_prev);
+	$display("| real abre = %b | real bloqueado = %b | real estado = %b | real modo = %b | real salvou = %b | ",abre_prev,bloqueado_prev,estado_prev,modo_prev,salvou_prev);
+`endif
+	if (
+		( abre_expected_prev !== 1'bx ) && ( abre_prev !== abre_expected_prev )
+		&& ((abre_expected_prev !== last_abre_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port abre :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", abre_expected_prev);
+		$display ("     Real value = %b", abre_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_abre_exp = abre_expected_prev;
+	end
+	if (
+		( bloqueado_expected_prev !== 1'bx ) && ( bloqueado_prev !== bloqueado_expected_prev )
+		&& ((bloqueado_expected_prev !== last_bloqueado_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port bloqueado :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", bloqueado_expected_prev);
+		$display ("     Real value = %b", bloqueado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_bloqueado_exp = bloqueado_expected_prev;
+	end
+	if (
+		( estado_expected_prev[0] !== 1'bx ) && ( estado_prev[0] !== estado_expected_prev[0] )
+		&& ((estado_expected_prev[0] !== last_estado_exp[0]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port estado[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", estado_expected_prev);
+		$display ("     Real value = %b", estado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_estado_exp[0] = estado_expected_prev[0];
+	end
+	if (
+		( estado_expected_prev[1] !== 1'bx ) && ( estado_prev[1] !== estado_expected_prev[1] )
+		&& ((estado_expected_prev[1] !== last_estado_exp[1]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port estado[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", estado_expected_prev);
+		$display ("     Real value = %b", estado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_estado_exp[1] = estado_expected_prev[1];
+	end
+	if (
+		( estado_expected_prev[2] !== 1'bx ) && ( estado_prev[2] !== estado_expected_prev[2] )
+		&& ((estado_expected_prev[2] !== last_estado_exp[2]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port estado[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", estado_expected_prev);
+		$display ("     Real value = %b", estado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_estado_exp[2] = estado_expected_prev[2];
+	end
+	if (
+		( modo_expected_prev !== 1'bx ) && ( modo_prev !== modo_expected_prev )
+		&& ((modo_expected_prev !== last_modo_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port modo :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", modo_expected_prev);
+		$display ("     Real value = %b", modo_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_modo_exp = modo_expected_prev;
+	end
+	if (
+		( salvou_expected_prev !== 1'bx ) && ( salvou_prev !== salvou_expected_prev )
+		&& ((salvou_expected_prev !== last_salvou_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port salvou :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", salvou_expected_prev);
+		$display ("     Real value = %b", salvou_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_salvou_exp = salvou_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module cofre_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg clk;
+reg clk_FPGA;
+reg cs;
+reg reset;
+reg [7:0] teclas;
+// wires                                               
+wire abre;
+wire bloqueado;
+wire [2:0] estado;
+wire modo;
+wire salvou;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+cofre i1 (
+// port map - connection between master ports and signals/registers   
+	.abre(abre),
+	.bloqueado(bloqueado),
+	.clk(clk),
+	.clk_FPGA(clk_FPGA),
+	.cs(cs),
+	.estado(estado),
+	.modo(modo),
+	.reset(reset),
+	.salvou(salvou),
+	.teclas(teclas)
+);
+
+// clk
+initial
+begin
+	clk = 1'b0;
+	clk = #90000 1'b1;
+	clk = #20000 1'b0;
+	clk = #100000 1'b1;
+	clk = #40000 1'b0;
+	clk = #190000 1'b1;
+	clk = #50000 1'b0;
+end 
+
+// clk_FPGA
+always
+begin
+	clk_FPGA = 1'b0;
+	clk_FPGA = #10000 1'b1;
+	#10000;
+end 
+
+// cs
+always
+begin
+	cs = 1'b0;
+	cs = #500000 1'b1;
+	#500000;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+	reset = #770000 1'b1;
+	reset = #180000 1'b0;
+end 
+// teclas[ 7 ]
+initial
+begin
+	teclas[7] = 1'b1;
+	teclas[7] = #80000 1'b0;
+end 
+// teclas[ 6 ]
+initial
+begin
+	teclas[6] = 1'b1;
+	teclas[6] = #80000 1'b0;
+end 
+// teclas[ 5 ]
+initial
+begin
+	teclas[5] = 1'b0;
+end 
+// teclas[ 4 ]
+initial
+begin
+	teclas[4] = 1'b1;
+	teclas[4] = #80000 1'b0;
+end 
+// teclas[ 3 ]
+initial
+begin
+	teclas[3] = 1'b1;
+	teclas[3] = #80000 1'b0;
+end 
+// teclas[ 2 ]
+initial
+begin
+	teclas[2] = 1'b0;
+end 
+// teclas[ 1 ]
+initial
+begin
+	teclas[1] = 1'b0;
+end 
+// teclas[ 0 ]
+initial
+begin
+	teclas[0] = 1'b0;
+end 
+
+cofre_vlg_sample_tst tb_sample (
+	.clk(clk),
+	.clk_FPGA(clk_FPGA),
+	.cs(cs),
+	.reset(reset),
+	.teclas(teclas),
+	.sampler_tx(sampler)
+);
+
+cofre_vlg_check_tst tb_out(
+	.abre(abre),
+	.bloqueado(bloqueado),
+	.estado(estado),
+	.modo(modo),
+	.salvou(salvou),
+	.sampler_rx(sampler)
+);
+endmodule
+
