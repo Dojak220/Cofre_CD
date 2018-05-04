@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "05/03/2018 17:51:40"
+// Generated on "05/03/2018 22:57:09"
                                                                         
 // Verilog Self-Checking Test Bench (with test vectors) for design :    cofre
 // 
@@ -156,22 +156,16 @@ end
 initial
 begin
 	estado_expected[2] = 1'bX;
-	estado_expected[2] = #10000 1'b0;
-	estado_expected[2] = #80000 1'bX;
 end 
 // expected estado[ 1 ]
 initial
 begin
 	estado_expected[1] = 1'bX;
-	estado_expected[1] = #10000 1'b0;
-	estado_expected[1] = #80000 1'bX;
 end 
 // expected estado[ 0 ]
 initial
 begin
 	estado_expected[0] = 1'bX;
-	estado_expected[0] = #10000 1'b0;
-	estado_expected[0] = #80000 1'bX;
 end 
 
 // expected modo
@@ -302,7 +296,7 @@ if (nummismatches > 0)
 	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
 else
 	$display ("Simulation passed !");
-$finish;
+$stop;
 end 
 endmodule
 
@@ -342,12 +336,12 @@ cofre i1 (
 initial
 begin
 	clk = 1'b0;
-	clk = #90000 1'b1;
-	clk = #20000 1'b0;
 	clk = #100000 1'b1;
+	clk = #20000 1'b0;
+	clk = #210000 1'b1;
+	clk = #20000 1'b0;
+	clk = #210000 1'b1;
 	clk = #40000 1'b0;
-	clk = #190000 1'b1;
-	clk = #50000 1'b0;
 end 
 
 // clk_FPGA
@@ -359,53 +353,63 @@ begin
 end 
 
 // cs
-always
+initial
 begin
 	cs = 1'b0;
-	cs = #500000 1'b1;
-	#500000;
+	cs = #230000 1'b1;
+	cs = #410000 1'b0;
 end 
 
 // reset
 initial
 begin
 	reset = 1'b0;
-	reset = #770000 1'b1;
-	reset = #180000 1'b0;
+	reset = #470000 1'b1;
+	reset = #30000 1'b0;
+	reset = #270000 1'b1;
+	reset = #30000 1'b0;
 end 
 // teclas[ 7 ]
 initial
 begin
-	teclas[7] = 1'b1;
-	teclas[7] = #80000 1'b0;
+	teclas[7] = 1'b0;
 end 
 // teclas[ 6 ]
 initial
 begin
-	teclas[6] = 1'b1;
-	teclas[6] = #80000 1'b0;
+	teclas[6] = 1'b0;
 end 
 // teclas[ 5 ]
 initial
 begin
-	teclas[5] = 1'b0;
+	teclas[5] = 1'b1;
+	teclas[5] = #180000 1'b0;
+	teclas[5] = #120000 1'b1;
+	teclas[5] = #170000 1'b0;
 end 
 // teclas[ 4 ]
 initial
 begin
 	teclas[4] = 1'b1;
-	teclas[4] = #80000 1'b0;
+	teclas[4] = #180000 1'b0;
+	teclas[4] = #120000 1'b1;
+	teclas[4] = #170000 1'b0;
 end 
 // teclas[ 3 ]
 initial
 begin
 	teclas[3] = 1'b1;
-	teclas[3] = #80000 1'b0;
+	teclas[3] = #180000 1'b0;
+	teclas[3] = #120000 1'b1;
+	teclas[3] = #170000 1'b0;
 end 
 // teclas[ 2 ]
 initial
 begin
-	teclas[2] = 1'b0;
+	teclas[2] = 1'b1;
+	teclas[2] = #180000 1'b0;
+	teclas[2] = #120000 1'b1;
+	teclas[2] = #170000 1'b0;
 end 
 // teclas[ 1 ]
 initial

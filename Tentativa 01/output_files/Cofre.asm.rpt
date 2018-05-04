@@ -1,5 +1,5 @@
 Assembler report for Cofre
-Thu May 03 17:54:29 2018
+Thu May 03 23:49:03 2018
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu May 03 17:54:29 2018 ;
+; Assembler Status      ; Successful - Thu May 03 23:49:03 2018 ;
 ; Revision Name         ; Cofre                                 ;
 ; Top-level Entity Name ; cofre                                 ;
 ; Family                ; Cyclone II                            ;
@@ -94,8 +94,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                      ;
 +----------------+------------------------------------------------------------------------------+
 ; Device         ; EP2C35F672C6                                                                 ;
-; JTAG usercode  ; 0x002FA7EB                                                                   ;
-; Checksum       ; 0x002FA7EB                                                                   ;
+; JTAG usercode  ; 0x002FA880                                                                   ;
+; Checksum       ; 0x002FA880                                                                   ;
 +----------------+------------------------------------------------------------------------------+
 
 
@@ -106,7 +106,7 @@ applicable agreement for further details.
 +--------------------+--------------------------------------------------------------------------+
 ; Device             ; EPCS16                                                                   ;
 ; JTAG usercode      ; 0x00000000                                                               ;
-; Checksum           ; 0x1C78C9BC                                                               ;
+; Checksum           ; 0x1C7877E2                                                               ;
 ; Compression Ratio  ; 3                                                                        ;
 +--------------------+--------------------------------------------------------------------------+
 
@@ -117,14 +117,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Thu May 03 17:54:21 2018
+    Info: Processing started: Thu May 03 23:48:54 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Cofre -c Cofre
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 490 megabytes
-    Info: Processing ended: Thu May 03 17:54:29 2018
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Processing ended: Thu May 03 23:49:03 2018
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:09
 
 

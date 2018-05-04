@@ -14,7 +14,7 @@ architecture estrutura of cofre is
  --signal estado: std_logic_vector(2 downto 0) := "000";
    signal estado_aux: std_logic_vector(2 downto 0) := "000";
 	signal senha_memoria: std_logic_vector(7 downto 0) := "00000000";
-	signal entrada: std_logic_vector(7 downto 0);
+	signal entrada: std_logic_vector(7 downto 0) := "00000000";
 	signal resultado_compara: std_logic := '0';
 	signal compare : std_logic_vector(7 downto 0) := "00000000";
 	signal senha_salva: std_logic := '0';
@@ -33,11 +33,12 @@ architecture estrutura of cofre is
 					led_modo <= '1';
 					led_abre <= '1';
 					
-					if (cs = '0' and clk = '0' and (senha_salva = '0')) then
+					if (cs = '0' and clk = '1' and (senha_salva = '0')) then
 						estado_aux <= "001";
-					end if;
-					if (cs = '1' and clk = '0' and (senha_salva = '1')) then
-						estado_aux <="010";
+					elsif (cs = '1' and (senha_salva = '1')) then
+						estado_aux <= "010";
+					else
+						estado_aux <= "000";
 					end if;
 				when "001" => --modo salva
 					senha_memoria(0)<= entrada(0);
@@ -58,11 +59,12 @@ architecture estrutura of cofre is
 					led_abre <= '1';
 					led_bloq <= '0';
 					
-					if (clk = '0' and cs = '0') then
+					if (cs = '0') then
 						estado_aux <= "000";
-						
-					elsif (clk = '0' and cs = '1') then
+					elsif (clk = '1' and cs = '1') then
 						estado_aux <= "011";
+					else
+						estado_aux <="010";
 					end if;
 				
 				when "011" => --comparando
@@ -78,24 +80,28 @@ architecture estrutura of cofre is
  					resultado_compara <= (compare(0) and compare(1) and compare(2) and compare(3) and compare(4) and compare(5) and compare(6) and compare(7));
 					if (resultado_compara = '1') then
 						estado_aux <= "100";
-					else 
+					else
 						estado_aux <= "101";
 					end if;
 				when "100" => --aberto
 					led_abre <= '0';
 					led_bloq <= '0';
-					led_modo <= '0';
 					
-					if (reset = '0') then --volta seg/op
+					if (cs = '0') then
+						estado_aux <= "000";
+					elsif (cs = '1' and reset = '1') then --volta seg/op
 						estado_aux <= "010";
+					else
+						estado_aux <= "100";
 					end if;
 				when "101" => --bloqueado
 					led_abre <= '1';
 					led_bloq <= '1';
-					led_modo <= '1';
 
-					if (reset = '0') then
+					if (reset = '1') then
 						estado_aux <= "110";
+					else
+						estado_aux <= "101";
 					end if;			
 				when "110" => --espera
 					led_bloq <= '0';
@@ -104,15 +110,17 @@ architecture estrutura of cofre is
 					senha_salva <= '0';
 
 				when others =>
-					estado_aux <= "010";--seg/op
+				estado_aux <= "010"; --seg/op
 				end case;
 			end if;
 					--estado <= estado_aux;
-				end process;
-		
-				modo <= led_modo;
-				abre <= led_abre;
-				bloqueado <= led_bloq;
-				salvou <= senha_salva;
-				estado <= estado_aux;
+		end process;
+	
+		modo <= led_modo;
+		abre <= led_abre;
+		bloqueado <= led_bloq;
+		salvou <= senha_salva;
+		estado <= estado_aux;
+		--entrada <= teclas;
+
 end estrutura;

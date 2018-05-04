@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Cofre
-Thu May 03 17:54:37 2018
+Thu May 03 23:49:10 2018
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -106,7 +106,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------+-----------------+------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
 +------------+-----------------+------------+---------------------------------------------------------------+
-; 454.34 MHz ; 420.17 MHz      ; clk_FPGA   ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 629.33 MHz ; 420.17 MHz      ; clk_FPGA   ; limit due to minimum period restriction (max I/O toggle rate) ;
 +------------+-----------------+------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -116,7 +116,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+---------------+
 ; Clock    ; Slack  ; End Point TNS ;
 +----------+--------+---------------+
-; clk_FPGA ; -1.201 ; -2.781        ;
+; clk_FPGA ; -0.589 ; -2.554        ;
 +----------+--------+---------------+
 
 
@@ -146,7 +146,7 @@ No paths to report.
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; clk_FPGA ; -1.380 ; -7.380             ;
+; clk_FPGA ; -1.380 ; -8.380             ;
 +----------+--------+--------------------+
 
 
@@ -155,29 +155,32 @@ No paths to report.
 +--------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node     ; To Node       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+---------------+---------------+--------------+-------------+--------------+------------+------------+
-; -1.201 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 2.237      ;
-; -1.023 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 2.059      ;
-; -1.012 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 2.048      ;
-; -0.892 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.928      ;
-; -0.890 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.926      ;
-; -0.781 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.817      ;
-; -0.762 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.798      ;
-; -0.506 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.542      ;
-; -0.220 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.256      ;
-; -0.129 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.165      ;
-; -0.128 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.164      ;
-; -0.113 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.149      ;
-; -0.091 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.127      ;
-; -0.083 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.119      ;
-; -0.080 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.116      ;
-; -0.053 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.089      ;
-; 0.190  ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.846      ;
-; 0.199  ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.837      ;
-; 0.200  ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.836      ;
-; 0.379  ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
+; -0.589 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.625      ;
+; -0.491 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.527      ;
+; -0.482 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.518      ;
+; -0.467 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.503      ;
+; -0.458 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.494      ;
+; -0.453 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.489      ;
+; -0.297 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.333      ;
+; -0.261 ; estado_aux[2] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.297      ;
+; -0.260 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.296      ;
+; -0.259 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.295      ;
+; -0.257 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.293      ;
+; -0.237 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.273      ;
+; -0.229 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.265      ;
+; -0.206 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.242      ;
+; -0.194 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.230      ;
+; -0.192 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.228      ;
+; -0.190 ; estado_aux[0] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.226      ;
+; -0.067 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.103      ;
+; -0.043 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.079      ;
+; 0.203  ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.833      ;
+; 0.204  ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.832      ;
 ; 0.379  ; senha_salva   ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
-; 0.379  ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
+; 0.379  ; led_modo      ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
 ; 0.379  ; led_bloq      ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
+; 0.379  ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
+; 0.379  ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.657      ;
 +--------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -186,29 +189,32 @@ No paths to report.
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node     ; To Node       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
-; 0.391 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; senha_salva   ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.391 ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
 ; 0.391 ; led_bloq      ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
-; 0.570 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.836      ;
-; 0.571 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.837      ;
-; 0.580 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.846      ;
-; 0.823 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.089      ;
-; 0.827 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.093      ;
-; 0.850 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.116      ;
-; 0.850 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.116      ;
-; 0.853 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.119      ;
-; 0.861 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.127      ;
-; 0.883 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.149      ;
-; 0.898 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.164      ;
-; 0.899 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.165      ;
-; 0.990 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.256      ;
-; 1.145 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.411      ;
-; 1.307 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.573      ;
-; 1.696 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.962      ;
-; 1.780 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 2.046      ;
+; 0.391 ; led_modo      ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.657      ;
+; 0.566 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.832      ;
+; 0.567 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.833      ;
+; 0.813 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.079      ;
+; 0.837 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.103      ;
+; 0.837 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.103      ;
+; 0.947 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.213      ;
+; 0.960 ; estado_aux[0] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.226      ;
+; 0.962 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.228      ;
+; 0.964 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.230      ;
+; 0.999 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.265      ;
+; 1.027 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.293      ;
+; 1.029 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.295      ;
+; 1.030 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.296      ;
+; 1.031 ; estado_aux[2] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.297      ;
+; 1.067 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.333      ;
+; 1.068 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.334      ;
+; 1.100 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.366      ;
+; 1.208 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.474      ;
+; 1.234 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.500      ;
+; 1.237 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.503      ;
+; 1.252 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 1.518      ;
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -228,6 +234,8 @@ No paths to report.
 ; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_abre                  ;
 ; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_bloq                  ;
 ; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_bloq                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_modo                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_modo                  ;
 ; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_FPGA ; Rise       ; senha_salva               ;
 ; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; senha_salva               ;
 ; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; clk_FPGA|combout          ;
@@ -246,6 +254,8 @@ No paths to report.
 ; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_abre|clk              ;
 ; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_bloq|clk              ;
 ; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_bloq|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_modo|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_modo|clk              ;
 ; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; senha_salva|clk           ;
 ; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; senha_salva|clk           ;
 +--------+--------------+----------------+------------------+----------+------------+---------------------------+
@@ -256,9 +266,9 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; clk       ; clk_FPGA   ; 5.863 ; 5.863 ; Rise       ; clk_FPGA        ;
-; cs        ; clk_FPGA   ; 6.004 ; 6.004 ; Rise       ; clk_FPGA        ;
-; reset     ; clk_FPGA   ; 5.539 ; 5.539 ; Rise       ; clk_FPGA        ;
+; clk       ; clk_FPGA   ; 4.584 ; 4.584 ; Rise       ; clk_FPGA        ;
+; cs        ; clk_FPGA   ; 5.420 ; 5.420 ; Rise       ; clk_FPGA        ;
+; reset     ; clk_FPGA   ; 5.661 ; 5.661 ; Rise       ; clk_FPGA        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -267,9 +277,9 @@ No paths to report.
 +-----------+------------+--------+--------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+--------+------------+-----------------+
-; clk       ; clk_FPGA   ; -5.191 ; -5.191 ; Rise       ; clk_FPGA        ;
-; cs        ; clk_FPGA   ; -5.261 ; -5.261 ; Rise       ; clk_FPGA        ;
-; reset     ; clk_FPGA   ; -4.576 ; -4.576 ; Rise       ; clk_FPGA        ;
+; clk       ; clk_FPGA   ; -4.354 ; -4.354 ; Rise       ; clk_FPGA        ;
+; cs        ; clk_FPGA   ; -4.523 ; -4.523 ; Rise       ; clk_FPGA        ;
+; reset     ; clk_FPGA   ; -5.282 ; -5.282 ; Rise       ; clk_FPGA        ;
 +-----------+------------+--------+--------+------------+-----------------+
 
 
@@ -278,14 +288,14 @@ No paths to report.
 +------------+------------+-------+-------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +------------+------------+-------+-------+------------+-----------------+
-; abre       ; clk_FPGA   ; 7.778 ; 7.778 ; Rise       ; clk_FPGA        ;
-; bloqueado  ; clk_FPGA   ; 7.769 ; 7.769 ; Rise       ; clk_FPGA        ;
-; estado[*]  ; clk_FPGA   ; 6.434 ; 6.434 ; Rise       ; clk_FPGA        ;
-;  estado[0] ; clk_FPGA   ; 6.421 ; 6.421 ; Rise       ; clk_FPGA        ;
-;  estado[1] ; clk_FPGA   ; 6.434 ; 6.434 ; Rise       ; clk_FPGA        ;
-;  estado[2] ; clk_FPGA   ; 6.423 ; 6.423 ; Rise       ; clk_FPGA        ;
-; modo       ; clk_FPGA   ; 6.697 ; 6.697 ; Rise       ; clk_FPGA        ;
-; salvou     ; clk_FPGA   ; 6.686 ; 6.686 ; Rise       ; clk_FPGA        ;
+; abre       ; clk_FPGA   ; 8.241 ; 8.241 ; Rise       ; clk_FPGA        ;
+; bloqueado  ; clk_FPGA   ; 8.230 ; 8.230 ; Rise       ; clk_FPGA        ;
+; estado[*]  ; clk_FPGA   ; 6.482 ; 6.482 ; Rise       ; clk_FPGA        ;
+;  estado[0] ; clk_FPGA   ; 6.452 ; 6.452 ; Rise       ; clk_FPGA        ;
+;  estado[1] ; clk_FPGA   ; 6.482 ; 6.482 ; Rise       ; clk_FPGA        ;
+;  estado[2] ; clk_FPGA   ; 6.457 ; 6.457 ; Rise       ; clk_FPGA        ;
+; modo       ; clk_FPGA   ; 6.693 ; 6.693 ; Rise       ; clk_FPGA        ;
+; salvou     ; clk_FPGA   ; 6.684 ; 6.684 ; Rise       ; clk_FPGA        ;
 +------------+------------+-------+-------+------------+-----------------+
 
 
@@ -294,14 +304,14 @@ No paths to report.
 +------------+------------+-------+-------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +------------+------------+-------+-------+------------+-----------------+
-; abre       ; clk_FPGA   ; 7.778 ; 7.778 ; Rise       ; clk_FPGA        ;
-; bloqueado  ; clk_FPGA   ; 7.769 ; 7.769 ; Rise       ; clk_FPGA        ;
-; estado[*]  ; clk_FPGA   ; 6.421 ; 6.421 ; Rise       ; clk_FPGA        ;
-;  estado[0] ; clk_FPGA   ; 6.421 ; 6.421 ; Rise       ; clk_FPGA        ;
-;  estado[1] ; clk_FPGA   ; 6.434 ; 6.434 ; Rise       ; clk_FPGA        ;
-;  estado[2] ; clk_FPGA   ; 6.423 ; 6.423 ; Rise       ; clk_FPGA        ;
-; modo       ; clk_FPGA   ; 6.697 ; 6.697 ; Rise       ; clk_FPGA        ;
-; salvou     ; clk_FPGA   ; 6.686 ; 6.686 ; Rise       ; clk_FPGA        ;
+; abre       ; clk_FPGA   ; 8.241 ; 8.241 ; Rise       ; clk_FPGA        ;
+; bloqueado  ; clk_FPGA   ; 8.230 ; 8.230 ; Rise       ; clk_FPGA        ;
+; estado[*]  ; clk_FPGA   ; 6.452 ; 6.452 ; Rise       ; clk_FPGA        ;
+;  estado[0] ; clk_FPGA   ; 6.452 ; 6.452 ; Rise       ; clk_FPGA        ;
+;  estado[1] ; clk_FPGA   ; 6.482 ; 6.482 ; Rise       ; clk_FPGA        ;
+;  estado[2] ; clk_FPGA   ; 6.457 ; 6.457 ; Rise       ; clk_FPGA        ;
+; modo       ; clk_FPGA   ; 6.693 ; 6.693 ; Rise       ; clk_FPGA        ;
+; salvou     ; clk_FPGA   ; 6.684 ; 6.684 ; Rise       ; clk_FPGA        ;
 +------------+------------+-------+-------+------------+-----------------+
 
 
@@ -310,7 +320,7 @@ No paths to report.
 +----------+-------+---------------+
 ; Clock    ; Slack ; End Point TNS ;
 +----------+-------+---------------+
-; clk_FPGA ; 0.026 ; 0.000         ;
+; clk_FPGA ; 0.281 ; 0.000         ;
 +----------+-------+---------------+
 
 
@@ -340,7 +350,7 @@ No paths to report.
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; clk_FPGA ; -1.380 ; -7.380             ;
+; clk_FPGA ; -1.380 ; -8.380             ;
 +----------+--------+--------------------+
 
 
@@ -349,29 +359,32 @@ No paths to report.
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node     ; To Node       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
-; 0.026 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 1.006      ;
-; 0.102 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.930      ;
-; 0.102 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.930      ;
-; 0.134 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.898      ;
-; 0.136 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.896      ;
-; 0.174 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.858      ;
-; 0.213 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.819      ;
-; 0.312 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.720      ;
-; 0.438 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.594      ;
-; 0.471 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.561      ;
-; 0.472 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.560      ;
-; 0.480 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.552      ;
-; 0.480 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.552      ;
-; 0.491 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.541      ;
-; 0.492 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.540      ;
-; 0.494 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.538      ;
-; 0.607 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.425      ;
-; 0.614 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.418      ;
-; 0.615 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.417      ;
-; 0.665 ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
+; 0.281 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.751      ;
+; 0.319 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.713      ;
+; 0.323 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.709      ;
+; 0.325 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.707      ;
+; 0.343 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.689      ;
+; 0.345 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.687      ;
+; 0.409 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.623      ;
+; 0.410 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.622      ;
+; 0.410 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.622      ;
+; 0.411 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.621      ;
+; 0.414 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.618      ;
+; 0.421 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.611      ;
+; 0.422 ; estado_aux[2] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.610      ;
+; 0.436 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.596      ;
+; 0.441 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.591      ;
+; 0.443 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.589      ;
+; 0.443 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.589      ;
+; 0.446 ; estado_aux[0] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.586      ;
+; 0.499 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.533      ;
+; 0.614 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.418      ;
+; 0.615 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.417      ;
 ; 0.665 ; senha_salva   ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
-; 0.665 ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
 ; 0.665 ; led_bloq      ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
+; 0.665 ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
+; 0.665 ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
+; 0.665 ; led_modo      ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 1.000        ; 0.000      ; 0.367      ;
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -380,29 +393,32 @@ No paths to report.
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node     ; To Node       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
-; 0.215 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; senha_salva   ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.215 ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; estado_aux[2] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
 ; 0.215 ; led_bloq      ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
-; 0.265 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.417      ;
-; 0.266 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.418      ;
-; 0.273 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.425      ;
-; 0.386 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.538      ;
-; 0.388 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.540      ;
-; 0.388 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.540      ;
-; 0.389 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.541      ;
-; 0.389 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.541      ;
-; 0.400 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.552      ;
-; 0.400 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.552      ;
-; 0.408 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.560      ;
-; 0.409 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.561      ;
-; 0.442 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.594      ;
-; 0.509 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.661      ;
-; 0.589 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.741      ;
-; 0.744 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.896      ;
-; 0.776 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.928      ;
+; 0.215 ; led_modo      ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; led_abre      ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.265 ; estado_aux[2] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.417      ;
+; 0.266 ; estado_aux[2] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.418      ;
+; 0.381 ; estado_aux[2] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.533      ;
+; 0.384 ; estado_aux[2] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.536      ;
+; 0.421 ; estado_aux[2] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.573      ;
+; 0.434 ; estado_aux[0] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.586      ;
+; 0.437 ; estado_aux[0] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.589      ;
+; 0.439 ; estado_aux[0] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.591      ;
+; 0.444 ; estado_aux[0] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.596      ;
+; 0.458 ; estado_aux[2] ; led_modo      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.610      ;
+; 0.466 ; senha_salva   ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.618      ;
+; 0.469 ; estado_aux[1] ; led_abre      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.621      ;
+; 0.470 ; estado_aux[1] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.622      ;
+; 0.470 ; estado_aux[1] ; estado_aux[2] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.622      ;
+; 0.471 ; estado_aux[1] ; led_bloq      ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.623      ;
+; 0.489 ; estado_aux[0] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.641      ;
+; 0.491 ; estado_aux[0] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.643      ;
+; 0.532 ; estado_aux[1] ; estado_aux[0] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.684      ;
+; 0.550 ; estado_aux[1] ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.702      ;
+; 0.555 ; senha_salva   ; estado_aux[1] ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.707      ;
+; 0.557 ; estado_aux[0] ; senha_salva   ; clk_FPGA     ; clk_FPGA    ; 0.000        ; 0.000      ; 0.709      ;
 +-------+---------------+---------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -422,6 +438,8 @@ No paths to report.
 ; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_abre                  ;
 ; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_bloq                  ;
 ; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_bloq                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_modo                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_modo                  ;
 ; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk_FPGA ; Rise       ; senha_salva               ;
 ; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; senha_salva               ;
 ; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; clk_FPGA|combout          ;
@@ -440,6 +458,8 @@ No paths to report.
 ; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_abre|clk              ;
 ; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_bloq|clk              ;
 ; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_bloq|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; led_modo|clk              ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; led_modo|clk              ;
 ; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; clk_FPGA ; Rise       ; senha_salva|clk           ;
 ; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; clk_FPGA ; Rise       ; senha_salva|clk           ;
 +--------+--------------+----------------+------------------+----------+------------+---------------------------+
@@ -450,9 +470,9 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; clk       ; clk_FPGA   ; 3.001 ; 3.001 ; Rise       ; clk_FPGA        ;
-; cs        ; clk_FPGA   ; 3.125 ; 3.125 ; Rise       ; clk_FPGA        ;
-; reset     ; clk_FPGA   ; 2.931 ; 2.931 ; Rise       ; clk_FPGA        ;
+; clk       ; clk_FPGA   ; 2.455 ; 2.455 ; Rise       ; clk_FPGA        ;
+; cs        ; clk_FPGA   ; 2.907 ; 2.907 ; Rise       ; clk_FPGA        ;
+; reset     ; clk_FPGA   ; 2.985 ; 2.985 ; Rise       ; clk_FPGA        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -461,9 +481,9 @@ No paths to report.
 +-----------+------------+--------+--------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+--------+------------+-----------------+
-; clk       ; clk_FPGA   ; -2.690 ; -2.690 ; Rise       ; clk_FPGA        ;
-; cs        ; clk_FPGA   ; -2.788 ; -2.788 ; Rise       ; clk_FPGA        ;
-; reset     ; clk_FPGA   ; -2.499 ; -2.499 ; Rise       ; clk_FPGA        ;
+; clk       ; clk_FPGA   ; -2.335 ; -2.335 ; Rise       ; clk_FPGA        ;
+; cs        ; clk_FPGA   ; -2.477 ; -2.477 ; Rise       ; clk_FPGA        ;
+; reset     ; clk_FPGA   ; -2.794 ; -2.794 ; Rise       ; clk_FPGA        ;
 +-----------+------------+--------+--------+------------+-----------------+
 
 
@@ -472,14 +492,14 @@ No paths to report.
 +------------+------------+-------+-------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +------------+------------+-------+-------+------------+-----------------+
-; abre       ; clk_FPGA   ; 4.272 ; 4.272 ; Rise       ; clk_FPGA        ;
-; bloqueado  ; clk_FPGA   ; 4.329 ; 4.329 ; Rise       ; clk_FPGA        ;
-; estado[*]  ; clk_FPGA   ; 3.679 ; 3.679 ; Rise       ; clk_FPGA        ;
-;  estado[0] ; clk_FPGA   ; 3.676 ; 3.676 ; Rise       ; clk_FPGA        ;
-;  estado[1] ; clk_FPGA   ; 3.679 ; 3.679 ; Rise       ; clk_FPGA        ;
-;  estado[2] ; clk_FPGA   ; 3.677 ; 3.677 ; Rise       ; clk_FPGA        ;
+; abre       ; clk_FPGA   ; 4.611 ; 4.611 ; Rise       ; clk_FPGA        ;
+; bloqueado  ; clk_FPGA   ; 4.504 ; 4.504 ; Rise       ; clk_FPGA        ;
+; estado[*]  ; clk_FPGA   ; 3.701 ; 3.701 ; Rise       ; clk_FPGA        ;
+;  estado[0] ; clk_FPGA   ; 3.690 ; 3.690 ; Rise       ; clk_FPGA        ;
+;  estado[1] ; clk_FPGA   ; 3.701 ; 3.701 ; Rise       ; clk_FPGA        ;
+;  estado[2] ; clk_FPGA   ; 3.692 ; 3.692 ; Rise       ; clk_FPGA        ;
 ; modo       ; clk_FPGA   ; 3.816 ; 3.816 ; Rise       ; clk_FPGA        ;
-; salvou     ; clk_FPGA   ; 3.808 ; 3.808 ; Rise       ; clk_FPGA        ;
+; salvou     ; clk_FPGA   ; 3.806 ; 3.806 ; Rise       ; clk_FPGA        ;
 +------------+------------+-------+-------+------------+-----------------+
 
 
@@ -488,14 +508,14 @@ No paths to report.
 +------------+------------+-------+-------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +------------+------------+-------+-------+------------+-----------------+
-; abre       ; clk_FPGA   ; 4.272 ; 4.272 ; Rise       ; clk_FPGA        ;
-; bloqueado  ; clk_FPGA   ; 4.329 ; 4.329 ; Rise       ; clk_FPGA        ;
-; estado[*]  ; clk_FPGA   ; 3.676 ; 3.676 ; Rise       ; clk_FPGA        ;
-;  estado[0] ; clk_FPGA   ; 3.676 ; 3.676 ; Rise       ; clk_FPGA        ;
-;  estado[1] ; clk_FPGA   ; 3.679 ; 3.679 ; Rise       ; clk_FPGA        ;
-;  estado[2] ; clk_FPGA   ; 3.677 ; 3.677 ; Rise       ; clk_FPGA        ;
+; abre       ; clk_FPGA   ; 4.611 ; 4.611 ; Rise       ; clk_FPGA        ;
+; bloqueado  ; clk_FPGA   ; 4.504 ; 4.504 ; Rise       ; clk_FPGA        ;
+; estado[*]  ; clk_FPGA   ; 3.690 ; 3.690 ; Rise       ; clk_FPGA        ;
+;  estado[0] ; clk_FPGA   ; 3.690 ; 3.690 ; Rise       ; clk_FPGA        ;
+;  estado[1] ; clk_FPGA   ; 3.701 ; 3.701 ; Rise       ; clk_FPGA        ;
+;  estado[2] ; clk_FPGA   ; 3.692 ; 3.692 ; Rise       ; clk_FPGA        ;
 ; modo       ; clk_FPGA   ; 3.816 ; 3.816 ; Rise       ; clk_FPGA        ;
-; salvou     ; clk_FPGA   ; 3.808 ; 3.808 ; Rise       ; clk_FPGA        ;
+; salvou     ; clk_FPGA   ; 3.806 ; 3.806 ; Rise       ; clk_FPGA        ;
 +------------+------------+-------+-------+------------+-----------------+
 
 
@@ -504,10 +524,10 @@ No paths to report.
 +------------------+--------+-------+----------+---------+---------------------+
 ; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -1.201 ; 0.215 ; N/A      ; N/A     ; -1.380              ;
-;  clk_FPGA        ; -1.201 ; 0.215 ; N/A      ; N/A     ; -1.380              ;
-; Design-wide TNS  ; -2.781 ; 0.0   ; 0.0      ; 0.0     ; -7.38               ;
-;  clk_FPGA        ; -2.781 ; 0.000 ; N/A      ; N/A     ; -7.380              ;
+; Worst-case Slack ; -0.589 ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+;  clk_FPGA        ; -0.589 ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+; Design-wide TNS  ; -2.554 ; 0.0   ; 0.0      ; 0.0     ; -8.38               ;
+;  clk_FPGA        ; -2.554 ; 0.000 ; N/A      ; N/A     ; -8.380              ;
 +------------------+--------+-------+----------+---------+---------------------+
 
 
@@ -516,9 +536,9 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; clk       ; clk_FPGA   ; 5.863 ; 5.863 ; Rise       ; clk_FPGA        ;
-; cs        ; clk_FPGA   ; 6.004 ; 6.004 ; Rise       ; clk_FPGA        ;
-; reset     ; clk_FPGA   ; 5.539 ; 5.539 ; Rise       ; clk_FPGA        ;
+; clk       ; clk_FPGA   ; 4.584 ; 4.584 ; Rise       ; clk_FPGA        ;
+; cs        ; clk_FPGA   ; 5.420 ; 5.420 ; Rise       ; clk_FPGA        ;
+; reset     ; clk_FPGA   ; 5.661 ; 5.661 ; Rise       ; clk_FPGA        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -527,9 +547,9 @@ No paths to report.
 +-----------+------------+--------+--------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
 +-----------+------------+--------+--------+------------+-----------------+
-; clk       ; clk_FPGA   ; -2.690 ; -2.690 ; Rise       ; clk_FPGA        ;
-; cs        ; clk_FPGA   ; -2.788 ; -2.788 ; Rise       ; clk_FPGA        ;
-; reset     ; clk_FPGA   ; -2.499 ; -2.499 ; Rise       ; clk_FPGA        ;
+; clk       ; clk_FPGA   ; -2.335 ; -2.335 ; Rise       ; clk_FPGA        ;
+; cs        ; clk_FPGA   ; -2.477 ; -2.477 ; Rise       ; clk_FPGA        ;
+; reset     ; clk_FPGA   ; -2.794 ; -2.794 ; Rise       ; clk_FPGA        ;
 +-----------+------------+--------+--------+------------+-----------------+
 
 
@@ -538,14 +558,14 @@ No paths to report.
 +------------+------------+-------+-------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +------------+------------+-------+-------+------------+-----------------+
-; abre       ; clk_FPGA   ; 7.778 ; 7.778 ; Rise       ; clk_FPGA        ;
-; bloqueado  ; clk_FPGA   ; 7.769 ; 7.769 ; Rise       ; clk_FPGA        ;
-; estado[*]  ; clk_FPGA   ; 6.434 ; 6.434 ; Rise       ; clk_FPGA        ;
-;  estado[0] ; clk_FPGA   ; 6.421 ; 6.421 ; Rise       ; clk_FPGA        ;
-;  estado[1] ; clk_FPGA   ; 6.434 ; 6.434 ; Rise       ; clk_FPGA        ;
-;  estado[2] ; clk_FPGA   ; 6.423 ; 6.423 ; Rise       ; clk_FPGA        ;
-; modo       ; clk_FPGA   ; 6.697 ; 6.697 ; Rise       ; clk_FPGA        ;
-; salvou     ; clk_FPGA   ; 6.686 ; 6.686 ; Rise       ; clk_FPGA        ;
+; abre       ; clk_FPGA   ; 8.241 ; 8.241 ; Rise       ; clk_FPGA        ;
+; bloqueado  ; clk_FPGA   ; 8.230 ; 8.230 ; Rise       ; clk_FPGA        ;
+; estado[*]  ; clk_FPGA   ; 6.482 ; 6.482 ; Rise       ; clk_FPGA        ;
+;  estado[0] ; clk_FPGA   ; 6.452 ; 6.452 ; Rise       ; clk_FPGA        ;
+;  estado[1] ; clk_FPGA   ; 6.482 ; 6.482 ; Rise       ; clk_FPGA        ;
+;  estado[2] ; clk_FPGA   ; 6.457 ; 6.457 ; Rise       ; clk_FPGA        ;
+; modo       ; clk_FPGA   ; 6.693 ; 6.693 ; Rise       ; clk_FPGA        ;
+; salvou     ; clk_FPGA   ; 6.684 ; 6.684 ; Rise       ; clk_FPGA        ;
 +------------+------------+-------+-------+------------+-----------------+
 
 
@@ -554,14 +574,14 @@ No paths to report.
 +------------+------------+-------+-------+------------+-----------------+
 ; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +------------+------------+-------+-------+------------+-----------------+
-; abre       ; clk_FPGA   ; 4.272 ; 4.272 ; Rise       ; clk_FPGA        ;
-; bloqueado  ; clk_FPGA   ; 4.329 ; 4.329 ; Rise       ; clk_FPGA        ;
-; estado[*]  ; clk_FPGA   ; 3.676 ; 3.676 ; Rise       ; clk_FPGA        ;
-;  estado[0] ; clk_FPGA   ; 3.676 ; 3.676 ; Rise       ; clk_FPGA        ;
-;  estado[1] ; clk_FPGA   ; 3.679 ; 3.679 ; Rise       ; clk_FPGA        ;
-;  estado[2] ; clk_FPGA   ; 3.677 ; 3.677 ; Rise       ; clk_FPGA        ;
+; abre       ; clk_FPGA   ; 4.611 ; 4.611 ; Rise       ; clk_FPGA        ;
+; bloqueado  ; clk_FPGA   ; 4.504 ; 4.504 ; Rise       ; clk_FPGA        ;
+; estado[*]  ; clk_FPGA   ; 3.690 ; 3.690 ; Rise       ; clk_FPGA        ;
+;  estado[0] ; clk_FPGA   ; 3.690 ; 3.690 ; Rise       ; clk_FPGA        ;
+;  estado[1] ; clk_FPGA   ; 3.701 ; 3.701 ; Rise       ; clk_FPGA        ;
+;  estado[2] ; clk_FPGA   ; 3.692 ; 3.692 ; Rise       ; clk_FPGA        ;
 ; modo       ; clk_FPGA   ; 3.816 ; 3.816 ; Rise       ; clk_FPGA        ;
-; salvou     ; clk_FPGA   ; 3.808 ; 3.808 ; Rise       ; clk_FPGA        ;
+; salvou     ; clk_FPGA   ; 3.806 ; 3.806 ; Rise       ; clk_FPGA        ;
 +------------+------------+-------+-------+------------+-----------------+
 
 
@@ -570,7 +590,7 @@ No paths to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk_FPGA   ; clk_FPGA ; 36       ; 0        ; 0        ; 0        ;
+; clk_FPGA   ; clk_FPGA ; 32       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -580,7 +600,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk_FPGA   ; clk_FPGA ; 36       ; 0        ; 0        ; 0        ;
+; clk_FPGA   ; clk_FPGA ; 32       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -617,7 +637,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Thu May 03 17:54:33 2018
+    Info: Processing started: Thu May 03 23:49:05 2018
 Info: Command: quartus_sta Cofre -c Cofre
 Info: qsta_default_script.tcl version: #1
 Warning (136002): Ignored duplicate of assignment PARTITION_PRESERVE_HIGH_SPEED_TILES for node ""
@@ -676,10 +696,10 @@ Info (332105): Deriving Clocks
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow Model
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -1.201
+Info (332146): Worst-case setup slack is -0.589
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -1.201        -2.781 clk_FPGA 
+    Info (332119):    -0.589        -2.554 clk_FPGA 
 Info (332146): Worst-case hold slack is 0.391
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
@@ -689,13 +709,13 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -1.380
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -1.380        -7.380 clk_FPGA 
+    Info (332119):    -1.380        -8.380 clk_FPGA 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
-Info (332146): Worst-case setup slack is 0.026
+Info (332146): Worst-case setup slack is 0.281
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):     0.026         0.000 clk_FPGA 
+    Info (332119):     0.281         0.000 clk_FPGA 
 Info (332146): Worst-case hold slack is 0.215
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
@@ -706,14 +726,14 @@ Critical Warning (332148): Timing requirements not met
 Info (332146): Worst-case minimum pulse width slack is -1.380
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -1.380        -7.380 clk_FPGA 
+    Info (332119):    -1.380        -8.380 clk_FPGA 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 50 warnings
     Info: Peak virtual memory: 470 megabytes
-    Info: Processing ended: Thu May 03 17:54:37 2018
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Processing ended: Thu May 03 23:49:10 2018
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:05
 
 
