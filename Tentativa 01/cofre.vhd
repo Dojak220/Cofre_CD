@@ -4,14 +4,15 @@ use ieee.std_logic_1164.all;
 entity cofre is
 	port(
 		teclas: in std_logic_vector(7 downto 0);
+		teclasSAIDA: out std_logic_vector(7 downto 0);
 		cs, reset, clk, clk_FPGA: in std_logic;
 		modo, abre, bloqueado, salvou: out std_logic;
+		memoria: out std_logic_vector(7 downto 0);
       estado : out std_logic_vector(2 downto 0)
 		);
 end cofre;
 
 architecture estrutura of cofre is
- --signal estado: std_logic_vector(2 downto 0) := "000";
    signal estado_aux: std_logic_vector(2 downto 0) := "000";
 	signal senha_memoria: std_logic_vector(7 downto 0) := "00000000";
 	signal entrada: std_logic_vector(7 downto 0) := "00000000";
@@ -19,7 +20,6 @@ architecture estrutura of cofre is
 	signal compare : std_logic_vector(7 downto 0) := "00000000";
 	signal senha_salva: std_logic := '0';
 	signal led_bloq, led_abre, led_modo: std_logic := '0';
- --signal bloq: std_logic := '0';
 	
 	
 	begin
@@ -41,14 +41,7 @@ architecture estrutura of cofre is
 						estado_aux <= "000";
 					end if;
 				when "001" => --modo salva
-					senha_memoria(0)<= entrada(0);
-					senha_memoria(1)<= entrada(1);
-					senha_memoria(2)<= entrada(2);
-					senha_memoria(3)<= entrada(3);
-					senha_memoria(4)<= entrada(4);
-					senha_memoria(5)<= entrada(5);
-					senha_memoria(6)<= entrada(6);
-					senha_memoria(7)<= entrada(7);
+					senha_memoria <= entrada;
 					 
 					senha_salva <= '1';
 					estado_aux <= "000";
@@ -69,20 +62,13 @@ architecture estrutura of cofre is
 				
 				when "011" => --comparando
 					
-					compare(0) <= entrada(0) XNOR senha_memoria(0); 
-					compare(1) <= entrada(1) XNOR senha_memoria(1);  
-					compare(2) <= entrada(2) XNOR senha_memoria(2); 
-					compare(3) <= entrada(3) XNOR senha_memoria(3); 
-					compare(4) <= entrada(4) XNOR senha_memoria(4); 
-					compare(5) <= entrada(5) XNOR senha_memoria(5);  
-					compare(6) <= entrada(6) XNOR senha_memoria(6); 
-					compare(7) <= entrada(7) XNOR senha_memoria(7); 
- 					resultado_compara <= (compare(0) and compare(1) and compare(2) and compare(3) and compare(4) and compare(5) and compare(6) and compare(7));
-					if (resultado_compara = '1') then
+					
+					if (senha_memoria = entrada) then
 						estado_aux <= "100";
 					else
 						estado_aux <= "101";
 					end if;
+					
 				when "100" => --aberto
 					led_abre <= '0';
 					led_bloq <= '0';
@@ -94,6 +80,7 @@ architecture estrutura of cofre is
 					else
 						estado_aux <= "100";
 					end if;
+					
 				when "101" => --bloqueado
 					led_abre <= '1';
 					led_bloq <= '1';
@@ -102,7 +89,8 @@ architecture estrutura of cofre is
 						estado_aux <= "110";
 					else
 						estado_aux <= "101";
-					end if;			
+					end if;	
+					
 				when "110" => --espera
 					led_bloq <= '0';
 					senha_memoria <= "00000000";
@@ -116,11 +104,13 @@ architecture estrutura of cofre is
 					--estado <= estado_aux;
 		end process;
 	
-		modo <= led_modo;
-		abre <= led_abre;
-		bloqueado <= led_bloq;
-		salvou <= senha_salva;
-		estado <= estado_aux;
-		--entrada <= teclas;
+		teclasSAIDA <= entrada;     -- saida auxiliar para teste na waveform (teclas ativadas).
+		memoria <= senha_memoria;   -- saida auxiliar para teste na waveform (senha salva na memória).
+		modo <= led_modo;           -- modo de operação (configuração(0) ou segurança(1)).
+		abre <= led_abre;				 -- porta do cofre (aberta(0) ou fechada(1)).
+		bloqueado <= led_bloq;		 -- estado do cofre (desbloqueado(0) ou bloqueado(1)).
+		salvou <= senha_salva;		 -- indica se a senha está salva(1) ou não está salva(0).
+		estado <= estado_aux;       -- o sinal estado_aux é atribuido à saida estado.
+		entrada <= teclas;			 -- as teclas são usandas como sinal no process.
 
 end estrutura;

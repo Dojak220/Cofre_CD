@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Cofre
-Thu May 03 23:48:26 2018
+Fri May 04 11:57:30 2018
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -13,12 +13,10 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +42,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 03 23:48:25 2018      ;
+; Analysis & Synthesis Status        ; Successful - Fri May 04 11:57:30 2018      ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; Cofre                                      ;
 ; Top-level Entity Name              ; cofre                                      ;
 ; Family                             ; Cyclone II                                 ;
-; Total logic elements               ; 12                                         ;
-;     Total combinational functions  ; 12                                         ;
-;     Dedicated logic registers      ; 7                                          ;
-; Total registers                    ; 7                                          ;
-; Total pins                         ; 19                                         ;
+; Total logic elements               ; 27                                         ;
+;     Total combinational functions  ; 27                                         ;
+;     Dedicated logic registers      ; 15                                         ;
+; Total registers                    ; 15                                         ;
+; Total pins                         ; 35                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -171,28 +169,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 12            ;
+; Estimated Total logic elements              ; 27            ;
 ;                                             ;               ;
-; Total combinational functions               ; 12            ;
+; Total combinational functions               ; 27            ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 9             ;
-;     -- 3 input functions                    ; 2             ;
-;     -- <=2 input functions                  ; 1             ;
+;     -- 4 input functions                    ; 13            ;
+;     -- 3 input functions                    ; 5             ;
+;     -- <=2 input functions                  ; 9             ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 12            ;
+;     -- normal mode                          ; 27            ;
 ;     -- arithmetic mode                      ; 0             ;
 ;                                             ;               ;
-; Total registers                             ; 7             ;
-;     -- Dedicated logic registers            ; 7             ;
+; Total registers                             ; 15            ;
+;     -- Dedicated logic registers            ; 15            ;
 ;     -- I/O registers                        ; 0             ;
 ;                                             ;               ;
-; I/O pins                                    ; 19            ;
+; I/O pins                                    ; 35            ;
 ; Embedded Multiplier 9-bit elements          ; 0             ;
-; Maximum fan-out node                        ; estado_aux[0] ;
-; Maximum fan-out                             ; 10            ;
-; Total fan-out                               ; 66            ;
-; Average fan-out                             ; 1.74          ;
+; Maximum fan-out node                        ; estado_aux[2] ;
+; Maximum fan-out                             ; 19            ;
+; Total fan-out                               ; 147           ;
+; Average fan-out                             ; 1.91          ;
 +---------------------------------------------+---------------+
 
 
@@ -201,33 +199,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |cofre                     ; 12 (12)           ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 19   ; 0            ; |cofre              ;              ;
+; |cofre                     ; 27 (27)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 35   ; 0            ; |cofre              ;              ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; compare[1..7]                          ; Merged with compare[0]                 ;
-; senha_memoria[1..7]                    ; Merged with senha_memoria[0]           ;
-; senha_memoria[0]                       ; Stuck at GND due to stuck port data_in ;
-; compare[0]                             ; Stuck at GND due to stuck port data_in ;
-; resultado_compara                      ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 17 ;                                        ;
-+----------------------------------------+----------------------------------------+
-
-
-+---------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                           ;
-+------------------+---------------------------+----------------------------------------+
-; Register name    ; Reason for Removal        ; Registers Removed due to This Register ;
-+------------------+---------------------------+----------------------------------------+
-; senha_memoria[0] ; Stuck at GND              ; compare[0], resultado_compara          ;
-;                  ; due to stuck port data_in ;                                        ;
-+------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -235,12 +209,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 7     ;
+; Total registers                              ; 15    ;
 ; Number of registers using Synchronous Clear  ; 1     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 8     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -250,7 +224,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 8:1                ; 2 bits    ; 10 LEs        ; 2 LEs                ; 8 LEs                  ; Yes        ; |cofre|senha_salva         ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; Yes        ; |cofre|senha_memoria[0]    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -259,7 +233,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -269,7 +243,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Thu May 03 23:48:16 2018
+    Info: Processing started: Fri May 04 11:57:21 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Cofre -c Cofre
 Warning (136002): Ignored duplicate of assignment PARTITION_PRESERVE_HIGH_SPEED_TILES for node ""
 Warning (136002): Ignored duplicate of assignment PARTITION_IGNORE_SOURCE_FILE_CHANGES for node ""
@@ -377,26 +351,16 @@ Info (12021): Found 2 design units, including 1 entities, in source file compara
     Info (12022): Found design unit 1: comparador-estrutura
     Info (12023): Found entity 1: comparador
 Info (12127): Elaborating entity "Cofre" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at cofre.vhd(17): used explicit default value for signal "entrada" because signal was never assigned a value
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 8 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "teclas[0]"
-    Warning (15610): No output dependent on input pin "teclas[1]"
-    Warning (15610): No output dependent on input pin "teclas[2]"
-    Warning (15610): No output dependent on input pin "teclas[3]"
-    Warning (15610): No output dependent on input pin "teclas[4]"
-    Warning (15610): No output dependent on input pin "teclas[5]"
-    Warning (15610): No output dependent on input pin "teclas[6]"
-    Warning (15610): No output dependent on input pin "teclas[7]"
-Info (21057): Implemented 31 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 62 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 12 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 103 warnings
-    Info: Peak virtual memory: 586 megabytes
-    Info: Processing ended: Thu May 03 23:48:26 2018
-    Info: Elapsed time: 00:00:10
+    Info (21059): Implemented 23 output pins
+    Info (21061): Implemented 27 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 93 warnings
+    Info: Peak virtual memory: 582 megabytes
+    Info: Processing ended: Fri May 04 11:57:30 2018
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:08
 
 

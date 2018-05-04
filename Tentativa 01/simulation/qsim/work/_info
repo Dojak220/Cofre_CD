@@ -4,78 +4,78 @@ K3
 cModel Technology
 Z0 dC:\Users\dorgi\Desktop\Cofre_CD\Tentativa 01\simulation\qsim
 vcofre
-Z1 !s100 mRD<IjhF@_zT;T0<<ACoR1
-Z2 I9`STJM_<63mDAg:K=hlm?2
-Z3 VVnBojKWN[RIRO>;NndaDA1
-Z4 dC:\Users\dorgi\Desktop\Cofre_CD\Tentativa 01\simulation\qsim
-Z5 w1525380705
-Z6 8Cofre.vo
-Z7 FCofre.vo
+Z1 I=VE_6;ADOcO24@D3e@1h`2
+Z2 VV`YnkHVb]CbjIXoglO3Bc2
+Z3 dC:\Users\dorgi\Desktop\Cofre_CD\Tentativa 01\simulation\qsim
+Z4 w1525444134
+Z5 8Cofre.vo
+Z6 FCofre.vo
 L0 31
-Z8 OV;L;10.1d;51
+Z7 OV;L;10.1d;51
 r1
 31
-Z9 !s90 -work|work|Cofre.vo|
-Z10 o-work work -O0
+Z8 !s90 -work|work|Cofre.vo|
+Z9 o-work work -O0
 !i10b 1
+Z10 !s100 9L4na@0[nz2LGiJ`P^V;22
 !s85 0
-Z11 !s108 1525380709.882000
+Z11 !s108 1525444163.758000
 Z12 !s107 Cofre.vo|
 !s101 -O0
 vcofre_vlg_check_tst
 !i10b 1
-!s100 flmmOa<baC3a5:c8i]]i02
-I7QbMo@Jbj8HjhOGLWgbZk3
-Z13 V0m@2gb;Oddi7>h8WG_TlH3
-R4
-Z14 w1525380701
-Z15 8Cofre.vt
-Z16 FCofre.vt
+!s100 ]i=hlJQoEZlfOVISjciHH0
+InfNjOZ[H1F9D:RRgDI9Q`3
+VUM=C:GdgFG=:9Az1]FA[53
+R3
+Z13 w1525444129
+Z14 8Cofre.vt
+Z15 FCofre.vt
 L0 65
-R8
+R7
 r1
 !s85 0
 31
-Z17 !s108 1525380710.321000
-Z18 !s107 Cofre.vt|
-Z19 !s90 -work|work|Cofre.vt|
+Z16 !s108 1525444167.957000
+Z17 !s107 Cofre.vt|
+Z18 !s90 -work|work|Cofre.vt|
 !s101 -O0
-R10
+R9
 vcofre_vlg_sample_tst
 !i10b 1
-Z20 !s100 moCS1cfF5EBie^F>TTz`i3
-Z21 I3AG;A0I2h=9`dAYg>?85m3
-Z22 VY2fzOM1Kh2@M44`1U2S4U3
-R4
+Z19 !s100 moCS1cfF5EBie^F>TTz`i3
+Z20 I3AG;A0I2h=9`dAYg>?85m3
+Z21 VY2fzOM1Kh2@M44`1U2S4U3
+R3
+R13
 R14
 R15
-R16
 L0 29
-R8
+R7
 r1
 !s85 0
 31
+R16
 R17
 R18
-R19
 !s101 -O0
-R10
+R9
 vcofre_vlg_vec_tst
 !i10b 1
-!s100 A=T3VPS]WGa5AR@zze9ZC2
-IkFm<o;[Qn;Z[598fJ1=>d3
-Z23 VOHHMEe6=4Dk1TJc?XkUQ[0
-R4
+!s100 8ZGWjNIg8O`4VJo?=f`l40
+ITgl4kNMZ:nY;AAiK@PQ^13
+Z22 VOHHMEe6=4Dk1TJc?XkUQ[0
+R3
+R13
 R14
 R15
-R16
-L0 309
-R8
+L0 607
+R7
 r1
 !s85 0
 31
+R16
 R17
 R18
-R19
 !s101 -O0
-R10
+R9
